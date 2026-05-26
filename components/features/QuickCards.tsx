@@ -33,18 +33,20 @@ const cards = [
 
 export default function QuickCards() {
   return (
-    <div style={{
-      display: 'grid', gridTemplateColumns: '1fr 1fr',
-      gap: '14px', padding: '0 20px', marginTop: '-30px',
-    }}>
+    /* Removido padding inline fixo e adicionado grid responsivo do Tailwind */
+    <div className="grid grid-cols-2 md:grid-cols-2 gap-4 w-full -mt-7 relative z-10">
       {cards.map(c => (
         <Link key={c.href} href={c.href} className="card-3d" style={{
           backgroundColor: '#ffffff',
           borderRadius: '20px',
           padding: '20px 16px',
-          display: 'flex', flexDirection: 'column', gap: '10px',
-          textDecoration: 'none', color: 'inherit',
-          boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'between',
+          gap: '12px',
+          textDecoration: 'none',
+          color: 'inherit',
+          boxShadow: '0 10px 25px rgba(0,0,0,0.05)',
           border: '1px solid rgba(0,0,0,0.04)',
         }}>
           <div style={{
@@ -55,12 +57,13 @@ export default function QuickCards() {
             {c.svg}
           </div>
           <div>
-            <p style={{ fontSize: '15px', fontWeight: 800, color: '#1a1a2e', margin: 0 }}>{c.label}</p>
-            <p style={{ fontSize: '11px', color: '#8a94a6', marginTop: '2px' }}>{c.sub}</p>
+            <p style={{ fontSize: '16px', fontWeight: 800, color: '#1a1a2e', margin: 0 }}>{c.label}</p>
+            <p style={{ fontSize: '12px', color: '#8a94a6', marginTop: '2px', lineHeight: 1.2 }}>{c.sub}</p>
           </div>
           <div style={{
             display: 'flex', alignItems: 'center', gap: '4px',
             fontSize: '11px', fontWeight: 700, color: c.color,
+            marginTop: 'auto'
           }}>
             Ver tudo
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
