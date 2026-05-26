@@ -1,65 +1,148 @@
-import Image from "next/image";
+import Header from '@/components/layout/Header'
+import QuickCards from '@/components/features/QuickCards'
+import Image from 'next/image'
+import Link from 'next/link'
+
+const historico = [
+  {
+    cor: '#e6f7f1', corTexto: '#1a9e75',
+    titulo: 'Banho completo realizado',
+    data: '15 maio · Shampoo premium + hidratacao',
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#1a9e75" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="12" r="9" stroke="#1a9e75" strokeWidth="2"/></svg>,
+  },
+  {
+    cor: '#e8f2fb', corTexto: '#4a90d9',
+    titulo: 'Novo brinquedo adquirido',
+    data: '10 maio · Bolinha de corda · R$ 28,00',
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="4" stroke="#4a90d9" strokeWidth="2"/><path d="M12 8v8M8 12h8" stroke="#4a90d9" strokeWidth="2.5" strokeLinecap="round"/></svg>,
+  },
+  {
+    cor: '#fef9e7', corTexto: '#d4900a',
+    titulo: 'Vacina V10 aplicada',
+    data: '2 maio · Proxima dose em novembro',
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 3l6 6-9 9-3-3 9-9" stroke="#d4900a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M18 9l3-3-3-3-3 3" stroke="#d4900a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+  },
+]
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main style={{ fontFamily: "'Nunito', sans-serif", background: '#f0f4f8', minHeight: '100vh' }}>
+
+      <Header mostrarGreeting />
+      <QuickCards />
+
+      {/* Pet card 3D */}
+      <div style={{ padding: '0 20px', marginTop: '24px' }}>
+        <p style={{ fontSize: '11px', fontWeight: 700, color: '#8a94a6', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
+          Seu Pet
+        </p>
+        <div className="card-3d" style={{
+          borderRadius: '24px', overflow: 'hidden',
+          boxShadow: '0 8px 32px rgba(26,158,117,0.20)',
+          position: 'relative', height: '160px',
+          background: 'linear-gradient(135deg, #1a9e75 0%, #0f6e56 100%)',
+          cursor: 'pointer',
+        }}>
+          {/* Imagem do pet */}
+          <Image
+            src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&q=80"
+            alt="Thor"
+            fill
+            style={{ objectFit: 'cover', opacity: 0.35 }}
+          />
+          {/* Conteudo */}
+          <div style={{ position: 'absolute', inset: 0, padding: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+            <div style={{ color: 'white' }}>
+              <p style={{ fontSize: '26px', fontWeight: 900, fontFamily: "'Poppins',sans-serif", lineHeight: 1 }}>Thor</p>
+              <p style={{ fontSize: '13px', opacity: 0.85, marginTop: '4px' }}>Golden Retriever · 3 anos · Grande</p>
+              <span style={{
+                display: 'inline-block', marginTop: '8px',
+                background: 'rgba(255,255,255,0.2)', borderRadius: '20px',
+                padding: '3px 12px', fontSize: '11px', fontWeight: 700,
+              }}>
+                Nivel 3 · 420 PetCoins
+              </span>
+            </div>
+            {/* Badge saude */}
+            <div style={{
+              background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)',
+              borderRadius: '16px', padding: '10px 14px', textAlign: 'center',
+              border: '1px solid rgba(255,255,255,0.25)',
+            }}>
+              <div style={{ fontSize: '22px', fontWeight: 900, color: 'white', lineHeight: 1 }}>98%</div>
+              <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.8)', fontWeight: 600, marginTop: '2px' }}>Saude</div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </div>
+
+      {/* Proximo agendamento */}
+      <div style={{ padding: '0 20px', marginTop: '24px' }}>
+        <p style={{ fontSize: '11px', fontWeight: 700, color: '#8a94a6', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
+          Proximo Cuidado
+        </p>
+        <Link href="/agendar" className="card-3d" style={{
+          display: 'flex', alignItems: 'center', gap: '14px',
+          background: 'white', borderRadius: '20px', padding: '16px',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.07)',
+          textDecoration: 'none', color: 'inherit',
+          border: '1px solid rgba(0,0,0,0.04)',
+        }}>
+          <div style={{
+            width: '56px', height: '56px', borderRadius: '16px',
+            background: 'linear-gradient(135deg, #e6f7f1, #c8f0e4)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+          }}>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M7 16c0-2.2 2.2-4 5-4s5 1.8 5 4" stroke="#1a9e75" strokeWidth="2" strokeLinecap="round"/>
+              <ellipse cx="12" cy="8" rx="3" ry="2" stroke="#1a9e75" strokeWidth="2"/>
+              <path d="M4 8c1-2 3-3 4-2M20 8c-1-2-3-3-4-2" stroke="#1a9e75" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </div>
+          <div style={{ flex: 1 }}>
+            <p style={{ fontSize: '15px', fontWeight: 800, margin: 0 }}>Banho e Tosa</p>
+            <p style={{ fontSize: '12px', color: '#8a94a6', margin: '3px 0 0' }}>Sexta, 30 de maio · 14h00</p>
+            <span style={{
+              display: 'inline-block', marginTop: '6px',
+              background: '#fff8e1', color: '#d4900a',
+              fontSize: '10px', fontWeight: 800, padding: '3px 10px', borderRadius: '20px',
+            }}>Em 4 dias</span>
+          </div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18l6-6-6-6" stroke="#d0d5dd" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </Link>
+      </div>
+
+      {/* Historico */}
+      <div style={{ padding: '0 20px', marginTop: '24px', paddingBottom: '32px' }}>
+        <p style={{ fontSize: '11px', fontWeight: 700, color: '#8a94a6', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
+          Historico Recente
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          {historico.map((h, i) => (
+            <div key={i} style={{
+              display: 'flex', alignItems: 'center', gap: '12px',
+              background: 'white', borderRadius: '16px', padding: '14px',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.05)',
+              border: '1px solid rgba(0,0,0,0.04)',
+            }}>
+              <div style={{
+                width: '40px', height: '40px', borderRadius: '12px',
+                background: h.cor, display: 'flex', alignItems: 'center',
+                justifyContent: 'center', flexShrink: 0,
+              }}>
+                {h.svg}
+              </div>
+              <div>
+                <p style={{ fontSize: '13px', fontWeight: 700, margin: 0 }}>{h.titulo}</p>
+                <p style={{ fontSize: '11px', color: '#8a94a6', marginTop: '3px' }}>{h.data}</p>
+              </div>
+            </div>
+          ))}
         </div>
-      </main>
-    </div>
-  );
+      </div>
+
+    </main>
+  )
 }
