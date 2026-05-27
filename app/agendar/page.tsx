@@ -42,12 +42,49 @@ export default function AgendarPage() {
   const [horario, setHorario] = useState<string | null>(null)
   const [confirmado, setConfirmado] = useState(false)
 
-  function confirmar() {
+  async function confirmar() {
     if (!selecionado || !horario) return
-    setConfirmado(true)
-    setTimeout(() => setConfirmado(false), 3000)
-    setSelecionado(null)
-    setHorario(null)
+
+    // Busca as informações do serviço selecionado filtrando a lista local
+    const servicoAlvo = servicos.find(s => s.id === selecionado)
+    if (!servicoAlvo) return
+
+    try {
+      // Faz o POST enviando os dados para a nossa API interna
+      const res = await fetch('/agendamentos/api', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          horario: horario,
+          // Enviamos os dados necessários estruturados (sem o JSX bruto)
+          servico: {
+            nome: servicoAlvo.nome,
+            preco: servicoAlvo.preco,
+            duracao: servicoAlvo.duracao,
+            cor: servicoAlvo.cor,
+            corDestaque: servicoAlvo.corDestaque
+          }
+        }),
+      })
+
+      if (!res.ok) {
+        throw new Error('Falha ao salvar agendamento no servidor')
+      }
+
+      // Ativa o feedback de sucesso se a resposta da API retornar status HTTP 2xx
+      setConfirmado(true)
+      setTimeout(() => setConfirmado(false), 3000)
+      
+      // Reseta os estados locais da tela para limpar as seleções
+      setSelecionado(null)
+      setHorario(null)
+
+    } catch (error) {
+      console.error(error)
+      alert('Ops! Ocorreu um problema ao tentar agendar. Tente novamente.')
+    }
   }
 
   return (

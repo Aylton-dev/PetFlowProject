@@ -88,43 +88,51 @@ export default function Home() {
           {/* Lado Direito: Próximo Cuidado + Histórico (Ocupa 5 colunas no desktop) */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             
-            {/* Proximo agendamento */}
-            <div>
-              <p style={{ fontSize: '11px', fontWeight: 700, color: '#8a94a6', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
-                Proximo Cuidado
-              </p>
-              <Link href="/agendar" className="card-3d" style={{
-                display: 'flex', alignItems: 'center', gap: '14px',
-                background: 'white', borderRadius: '20px', padding: '16px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.07)',
-                textDecoration: 'none', color: 'inherit',
-                border: '1px solid rgba(0,0,0,0.04)',
-              }}>
-                <div style={{
-                  width: '56px', height: '56px', borderRadius: '16px',
-                  background: 'linear-gradient(135deg, #e6f7f1, #c8f0e4)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                }}>
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-                    <path d="M7 16c0-2.2 2.2-4 5-4s5 1.8 5 4" stroke="#1a9e75" strokeWidth="2" strokeLinecap="round"/>
-                    <ellipse cx="12" cy="8" rx="3" ry="2" stroke="#1a9e75" strokeWidth="2"/>
-                    <path d="M4 8c1-2 3-3 4-2M20 8c-1-2-3-3-4-2" stroke="#1a9e75" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
-                </div>
-                <div style={{ flex: 1 }}>
-                  <p style={{ fontSize: '15px', fontWeight: 800, margin: 0 }}>Banho e Tosa</p>
-                  <p style={{ fontSize: '12px', color: '#8a94a6', margin: '3px 0 0' }}>Sexta, 30 de maio · 14h00</p>
-                  <span style={{
-                    display: 'inline-block', marginTop: '6px',
-                    background: '#fff8e1', color: '#d4900a',
-                    fontSize: '10px', fontWeight: 800, padding: '3px 10px', borderRadius: '20px',
-                  }}>Em 4 dias</span>
-                </div>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path d="M9 18l6-6-6-6" stroke="#d0d5dd" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </Link>
-            </div>
+           {/* Proximo agendamento */}
+<div>
+  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+    <p style={{ fontSize: '11px', fontWeight: 700, color: '#8a94a6', textTransform: 'uppercase', letterSpacing: '0.08em', margin: 0 }}>
+      Proximo Cuidado
+    </p>
+    <Link href="/agendamentos" style={{
+  fontSize: '13px', fontWeight: 800, color: '#1a9e75', textDecoration: 'none',
+  background: '#e6f7f1', padding: '6px 14px', borderRadius: '20px',
+}}>
+  Ver todos →
+</Link>
+  </div>
+  <Link href="/agendar" className="card-3d" style={{
+    display: 'flex', alignItems: 'center', gap: '14px',
+    background: 'white', borderRadius: '20px', padding: '16px',
+    boxShadow: '0 4px 20px rgba(0,0,0,0.07)',
+    textDecoration: 'none', color: 'inherit',
+    border: '1px solid rgba(0,0,0,0.04)',
+  }}>
+    <div style={{
+      width: '56px', height: '56px', borderRadius: '16px',
+      background: 'linear-gradient(135deg, #e6f7f1, #c8f0e4)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+    }}>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <path d="M7 16c0-2.2 2.2-4 5-4s5 1.8 5 4" stroke="#1a9e75" strokeWidth="2" strokeLinecap="round"/>
+        <ellipse cx="12" cy="8" rx="3" ry="2" stroke="#1a9e75" strokeWidth="2"/>
+        <path d="M4 8c1-2 3-3 4-2M20 8c-1-2-3-3-4-2" stroke="#1a9e75" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    </div>
+    <div style={{ flex: 1 }}>
+      <p style={{ fontSize: '15px', fontWeight: 800, margin: 0 }}>Banho e Tosa</p>
+      <p style={{ fontSize: '12px', color: '#8a94a6', margin: '3px 0 0' }}>Sexta, 30 de maio · 14h00</p>
+      <span style={{
+        display: 'inline-block', marginTop: '6px',
+        background: '#fff8e1', color: '#d4900a',
+        fontSize: '10px', fontWeight: 800, padding: '3px 10px', borderRadius: '20px',
+      }}>Em 4 dias</span>
+    </div>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M9 18l6-6-6-6" stroke="#d0d5dd" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </Link>
+</div>
 
             {/* Historico */}
             <div>
